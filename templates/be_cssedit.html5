@@ -1,0 +1,97 @@
+<div id="tl_buttons">
+	<a href="<?php echo $this->href; ?>" class="header_back" title="<?php echo $this->title; ?>"><?php echo $this->button; ?></a>
+</div>
+<h2 class="sub_headline"><?php echo $this->headline; ?></h2>
+<div class="tl_message">
+	<?php echo $this->message; ?>
+</div>
+<form action="<?php echo $this->action; ?>" id="tl_cssedit" class="tl_form" method="post">
+	<div class="tl_formbody_edit">
+		<input type="hidden" name="FORM_SUBMIT" value="tl_cssedit" />
+		<input type="hidden" name="REQUEST_TOKEN" value="<?php echo REQUEST_TOKEN; ?>">
+		<div class="tl_header" onmouseout="Theme.hoverDiv(this, 0);" onmouseover="Theme.hoverDiv(this, 1);" style="">
+			<div style="text-align:right;">
+				<a href="<?php echo $this->editHeaderUrl; ?>" title="<?php echo $this->editHeader; ?>"><img src="system/themes/default/images/edit.gif" width="12" height="16" alt="Edit article header" /></a>
+			</div>
+			<table cellspacing="0" cellpadding="0" summary="Table lists all details of the header record" class="tl_header_table">
+				<tbody>
+					<tr>
+						<td><span class="tl_label"><?php echo $this->lblname; ?>:</span> </td>
+						<td><?php echo $this->name; ?></td>
+					</tr>
+					<tr>
+						<td><span class="tl_label"><?php echo $this->lblrevision ?>:</span> </td>
+						<td><?php echo $this->revision ?></td>
+					</tr>
+					<tr>
+						<td><span class="tl_label"><?php echo $this->lbltypes; ?>:</span> </td>
+						<td><?php echo $this->types; ?></td>
+					</tr>
+					<?php if (strlen($this->cc)): ?>
+					<tr>
+						<td><span class="tl_label"><?php echo $this->lblcc; ?>:</span> </td>
+						<td><?php echo $this->cc; ?></td>
+					</tr>
+					<?php endif; ?>
+					<?php if (strlen($this->mediaQuery)): ?>
+					<tr>
+						<td><span class="tl_label"><?php echo $this->lblmediaQuery; ?>:</span> </td>
+						<td><?php echo $this->mediaQuery; ?></td>
+					</tr>
+					<?php endif; ?>
+				</tbody>
+			</table>
+		</div>
+		<div class="tl_tbox">
+			<h3><?php echo $this->csscontent->generateLabel(); ?></h3>
+			 <?php echo $this->csscontent->generateWithError(); ?>
+			<?php if ($this->csscontent->help): ?>
+				<p class="tl_help"><?php echo $this->csscontent->help; ?></p>
+			<?php endif; ?>
+		</div>
+		<?php if (strlen($this->vars)): ?>
+		<div class="tl_footer">
+			<table cellspacing="0" cellpadding="0" summary="Table lists all details of the header record" class="tl_footer_table">
+				<tbody>
+					 <tr>
+						<td style="vertical-align:top;padding-top:3px;"><span class="tl_label"><?php echo $this->lblvars; ?>:</span> </td>
+						<td><?php echo $this->vars; ?></td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
+		<?php endif; ?>
+	</div>
+	<div class="tl_formbody_submit">
+		<div class="tl_submit_container">
+			<input type="submit" name="save" id="save" class="tl_submit" alt="<?php echo $this->submit; ?>" accesskey="s" value="<?php echo $this->submit; ?>" />
+			<input type="submit" name="saveNclose" id="saveNclose" class="tl_submit" alt="<?php echo $this->submitClose; ?>" accesskey="c" value="<?php echo $this->submitClose; ?>" />
+		</div>
+	</div>
+</form>
+
+<?php if ($this->useRTEditor && $this->startHighlight): ?>
+<style>
+.CodeMirror-scroll {
+	height: <?php echo $this->startHeight; ?>px;
+	overflow: auto;
+}
+</style>
+<script>
+window.addEvent('domready', function() {
+	var textarea = $('ctrl_<?php echo $this->contentId; ?>');
+	var uiOptions = {
+		path : 'system/modules/css_editor/js/',
+		searchMode : 'popup',
+		buttons : ['search','undo','redo','jump','about']
+	}
+
+	var codeMirrorOptions = {
+		mode: "css",
+		lineNumbers: true
+	}
+
+	var editor = new CodeMirrorUI(textarea,uiOptions,codeMirrorOptions);
+});
+</script>
+<?php endif; ?>
