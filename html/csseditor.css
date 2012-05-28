@@ -1,0 +1,11 @@
+.tblVars td {padding:3px;}
+.tblVars .odd td {background-color: #E7E7E7;}
+.tblVars .even td {background-color: #F7F7F7;}
+.tl_footer {
+    /*background: none repeat scroll 0 0 #F9F9F9;*/
+    border-bottom: 1px solid #DDDDDD;
+    border-top: 1px solid #DDDDDD;
+    padding: 6px;
+    width: 678px;
+    margin-bottom:26px;
+}
