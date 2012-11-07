@@ -1,11 +1,13 @@
 .codemirror-ui-button-frame{
-	border:1px solid #ccc;
+	border-top:1px solid #ccc;
+	border-left:1px solid #ccc;
+	border-right:1px solid #ccc;
 	background:#eee;
 	position:relative;
 }
 
 .codemirror-ui-button-frame input,.codemirror-ui-button-frame label{
-	/*font-size:0.6em;*/
+	font-size:0.6em;
 }
 
 .codemirror-ui-button-frame label input{
@@ -97,7 +99,6 @@ iframe{
 
 .CodeMirror{
 	border:1px solid #ccc;
-	border-top:0px;
 	background:white;
 }
 

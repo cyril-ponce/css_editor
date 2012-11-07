@@ -13,7 +13,7 @@
 			<div style="text-align:right;">
 				<a href="<?php echo $this->editHeaderUrl; ?>" title="<?php echo $this->editHeader; ?>"><img src="system/themes/default/images/edit.gif" width="12" height="16" alt="Edit article header" /></a>
 			</div>
-			<table cellspacing="0" cellpadding="0" summary="Table lists all details of the header record" class="tl_header_table">
+			<table cellspacing="0" cellpadding="0" class="tl_header_table">
 				<tbody>
 					<tr>
 						<td><span class="tl_label"><?php echo $this->lblname; ?>:</span> </td>
@@ -49,16 +49,22 @@
 				<p class="tl_help"><?php echo $this->csscontent->help; ?></p>
 			<?php endif; ?>
 		</div>
-		<?php if (strlen($this->vars)): ?>
-		<div class="tl_footer">
-			<table cellspacing="0" cellpadding="0" summary="Table lists all details of the header record" class="tl_footer_table">
-				<tbody>
-					 <tr>
-						<td style="vertical-align:top;padding-top:3px;"><span class="tl_label"><?php echo $this->lblvars; ?>:</span> </td>
-						<td><?php echo $this->vars; ?></td>
-					</tr>
-				</tbody>
-			</table>
+		<?php if (strlen($this->gVars) || strlen($this->tVars)): ?>
+		<div class="tl_tbox">
+		<?php if (strlen($this->gVars)): ?>
+		<div class="w50">
+			<h3><?php echo $this->lblgvars; ?></h3>
+			<?php echo $this->gVars; ?>
+		</div>
+		<?php endif; ?>
+
+		<?php if (strlen($this->tVars)): ?>
+		<div class="w50">
+			<h3><?php echo $this->lbltvars; ?></h3>
+			<?php echo $this->tVars; ?>
+		</div>
+		<?php endif; ?>
+		<div class="clear"></div>
 		</div>
 		<?php endif; ?>
 	</div>
@@ -74,14 +80,14 @@
 <style>
 .CodeMirror-scroll {
 	height: <?php echo $this->startHeight; ?>px;
-	overflow: auto;
 }
 </style>
 <script>
 window.addEvent('domready', function() {
 	var textarea = $('ctrl_<?php echo $this->contentId; ?>');
 	var uiOptions = {
-		path : 'system/modules/css_editor/js/',
+		path : 'system/modules/css_editor/assets/',
+		imagePath : 'system/modules/css_editor/assets/',
 		searchMode : 'popup',
 		buttons : ['search','undo','redo','jump','about']
 	}

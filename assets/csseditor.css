@@ -1,0 +1,4 @@
+.tblVars td {padding:3px;}
+.tblVars .odd td {background-color: #E7E7E7;}
+.tblVars .even td {background-color: #F7F7F7;}
+.codemirror-ui-button-frame input, .codemirror-ui-button-frame label {font-size: inherit !important;}
